@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/COOK.png" alt="Logo">
+                <img src="assets/SHOW.png" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav">
+            <a href="#">HOME</a>
+            <a href="#" id="favoritesButton">FAVORITES</a>
+        </nav>
+    </header>
+
+    <main role="main" class="main">
+        <div class="search-container">
+            <div class="searchbar">
+                <input type="text" placeholder="Search for recipes...">
+            </div>
+        </div>
+        
+        <div class="grid-container" id="recipe-container"></div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2 id="modal-title"></h2>
+              <img id="modal-image" alt="Recipe Image">
+              <p>Category: <span id="modal-category"></span></p>
+              <h3>Ingredients</h3>
+              <ul id="modal-ingredients"></ul>
+              <h3>Instructions:</h3>
+              <p id="modal-instructions"></p>
+            </div>
+          </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

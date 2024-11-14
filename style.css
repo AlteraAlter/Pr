@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fredoka", sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar{
+    display: flex;
+    width: 100dvw;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.logo{
+    display: flex;
+}
+
+.logo > img{
+    width: 100px;
+}
+
+.nav{
+    display: flex;
+    gap: 100px;
+}
+.nav > a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.main{
+    width: 100dvw;
+}
+
+.search-container {
+    position: relative;
+    background-image: url(assets/vintage-60s-twp2ga77uk1sqxa4\ 1.png);
+
+    width: 100%; /* Set to 100% of the parent container */
+     /* Optional: limit maximum width */
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    background-position: center;
+    background-size: cover;
+    padding: 10px;
+}
+
+.searchbar {
+    width: 100%;
+    max-width: 700px; /* Set maximum width */
+    position: relative;
+}
+
+.searchbar::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%; /* Center vertically */
+    left: 15px; /* Adjust left positioning */
+    transform: translateY(-50%);
+    background-image: url('assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    color: black;
+}
+
+.searchbar > input {
+    width: 100%; /* Make the input take up full width of .searchbar */
+    height: 30px; /* Increase for better touch targets on mobile */
+    padding: 10px 10px 10px 40px; /* Adjust padding to make space for icon */       
+    border-radius: 20px;
+    border: 1px solid #ccc; /* Initial border color */
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    transition: background-color 0.3s, border-color 0.3s; /* Transition background and border */
+}
+
+.searchbar > input:focus {
+    background-color: #ebebeb; /* Light blue background when focused */
+ /* Change border color when focused */
+}
+
+#recipe-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .category-section {
+    margin-bottom: 20px;
+  }
+
+  .category-title {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .recipe-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .recipe-card {
+    flex: 1 1 calc(33.33% - 10px); /* Three cards per row */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .recipe-card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .recipe-card h2 {
+    color: #333;
+    font-size: 1.2em;
+    margin: 10px 0;
+    font-weight: 400;
+  }
+
+  .recipe-card .category {
+    color: #555;
+    font-size: 0.9em;
+  }
+
+  .ingredients, .instructions {
+    margin-top: 10px;
+  }
+
+  .see-more-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%;
+    border-radius: 20px;
+  }
+
+.modal-content > img{
+    width: 70%;
+}
+.modal-content > h3{
+    font-weight: 500;
+}
+#modal-instructions{
+    width: 50%;
+}
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+/* Recipe Cards Hover Effect */
+.recipe-card {
+    flex: 1 1 calc(33.33% - 10px); /* Three cards per row */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 10px;
+    opacity: 0; /* Initially hidden */
+    animation: cardFadeIn 0.5s ease-out forwards; /* Add fade-in animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow transitions */
+  }
+  
+  .recipe-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the entire card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+  }
+  
+  .recipe-card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Smooth zoom for the image */
+  }
+  
+  .recipe-card h2 {
+    color: #333;
+    font-size: 1.2em;
+    margin: 10px 0;
+    font-weight: 400;
+  }
+  
+  .recipe-card .category {
+    color: #555;
+    font-size: 0.9em;
+  }
+  
+  .ingredients,
+  .instructions {
+    margin-top: 10px;
+  }
+  
+  /* Modal Close Button Hover Effect */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    transform: scale(1.2); /* Slightly enlarge the close button on hover */
+    cursor: pointer;
+  }
+  
+  /* Modal Fade-in and Fade-out Animation */
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes modalFadeOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation: modalFadeIn 0.3s ease-out;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%;
+    border-radius: 20px;
+    animation: modalFadeIn 0.3s ease-out;
+  }
+  
+  .modal-content > img {
+    width: 70%;
+  }
+  
+  .modal-content > h3 {
+    font-weight: 500;
+  }
+  
+  #modal-instructions {
+    width: 50%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Modal Close Animation */
+  .modal.fade-out {
+    animation: modalFadeOut 0.3s ease-out;
+  }
+  
+  /* Recipe Card Hover Animations */
+  @keyframes cardFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .searchbar {
+        max-width: 90%; /* Reduce width on smaller screens */
+    }
+    
+    .searchbar > input {
+        padding: 10px 10px 10px 35px; /* Adjust padding for icon */
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        height: 60px; /* Adjust height on smaller screens */
+    }
+    
+    .searchbar > input {
+        height: 30px; /* Reduce height for mobile */
+        padding: 8px 8px 8px 35px; /* Adjust padding */
+    }
+}
+
